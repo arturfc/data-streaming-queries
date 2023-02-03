@@ -31,7 +31,7 @@ O MongoDB é alimentado por dados do tipo *.json*, com os campos representados n
 
 ### Arquivo [ETL](https://github.com/arturfc/data-streaming-queries/blob/main/ETL.py)
 
-Este arquivo é responsável por executar as três pipelines em sequência.
+Este arquivo é responsável por executar as três pipelines (bronze, silver e gold) em sequência.
 
 ### Arquivo [DMLQueries](https://github.com/arturfc/data-streaming-queries/blob/main/DMLqueries.py)
 
