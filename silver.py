@@ -1,7 +1,7 @@
 '''
     read bronze json file
     modeling into a more optimized table and creating data quality checks
-    save gold parquet
+    save data into silver.parquet
 '''
 #%% 
 import json
@@ -34,13 +34,13 @@ def init():
     #creating spark session
     spark = (
         SparkSession.builder
-        .appName("bronzeToSilver")
+        .appName("silver")
         .getOrCreate()
     )
 
     df = (spark.read
         .option("multiline","true")
-        .json("result.json")
+        .json("bronze.json")
     )
 
     df = dataTransformation(df)

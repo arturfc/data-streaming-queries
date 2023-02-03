@@ -27,7 +27,7 @@ def init():
 
     spark = (
         SparkSession.builder
-        .appName("silverToGold")
+        .appName("gold")
         .getOrCreate()
     )
 

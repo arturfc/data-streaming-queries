@@ -1,1 +1,7 @@
-logs/
+silver.parquet/
+
+gold.parquet/
+
+bronze.json
+
+deprecated_codes

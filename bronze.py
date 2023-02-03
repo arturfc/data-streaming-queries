@@ -1,7 +1,6 @@
 '''
-    read bronze json file
-    modeling into a more optimized table and creating data quality checks
-    save gold parquet
+    read documents from source (MongoDB)
+    extracting data (as is) into bronze.json
 '''
 #%% 
 from pymongo import MongoClient
@@ -43,10 +42,10 @@ def init():
     mydb = client["local"]
     mycol = mydb["chatBot_feed"]
 
-    if fileExists("result.json"):
-        #get the last date from result.json to use as checkpoint
-        print("result.json already exists.")
-        f = open('result.json')
+    if fileExists("bronze.json"):
+        #get the last date from bronze.json to use as checkpoint
+        print("bronze.json already exists.")
+        f = open('bronze.json')
         data = json.load(f)
         last_doc = data[-1]
         date = last_doc.get('created_at')
@@ -55,17 +54,17 @@ def init():
 
         cursor = mycol.find({'created_at': {'$gt': date_obj}})
     else:
-        print("result.json doesn't exist.")
+        print("bronze.json doesn't exist.")
         cursor = mycol.find({})
 
     array_documents = []
     for documents in cursor:
         array_documents.append(documents)
 
-    filename = "result.json"
+    filename = "bronze.json"
     with open(filename, mode='w') as f:
         f.write(json_util.dumps(array_documents))
-    print("result.json imported from MongoDB successfully.")
+    print("bronze.json imported from MongoDB successfully.")
 
 if __name__ == "__main__":
     init()

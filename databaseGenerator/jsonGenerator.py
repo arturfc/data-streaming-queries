@@ -15,8 +15,8 @@ from datetime import timedelta
 IS_POPULATED = False
 SAMPLE_SIZE = 100
 STREAMING_SAMPLE_SIZE_RANGE = 4
-START_DATE = '2022-10-1 1:30 PM'
-END_DATE = '2022-12-5 1:30 PM'
+START_DATE = '2022-12-1 1:30 PM'
+END_DATE = '2023-2-3 1:30 PM'
 
 def randomDateList(start, end):
     """

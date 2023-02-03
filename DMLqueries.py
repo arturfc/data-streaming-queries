@@ -36,6 +36,28 @@ activityQuery = (
 )
 
 #%%
+#checking streaming spark session status
+print(f"Is stream active: {activityQuery.isActive}")
+print(activityQuery.status)
+
+#%%
+#Exibindo número total de documentos
+spark.sql(''' 
+    SELECT count(*) as total_docs
+    from gold_table
+''').show()
+
+#%%
+#Exibindo o último usuário atendido
+spark.sql(''' 
+    SELECT name, substr(created_at_utc,11) as period
+    from gold_table
+    group by name, created_at_utc
+    order by created_at_utc desc
+    limit 1
+''').show()
+
+#%%
 #Quantos foram os atendimentos por cliente? 
 spark.sql(''' 
     SELECT client_id, client_name, count(*) qtd_atendimentos

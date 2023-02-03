@@ -1,14 +1,14 @@
 #%% 
-import sourceToBronzeV2
-import bronzeToSilver
-import silverToGold
+import bronze
+import silver
+import gold
 import time
 
 def init():
     print("Executing entire ETL...")
-    sourceToBronzeV2.init()
-    bronzeToSilver.init()
-    silverToGold.init()
+    bronze.init()
+    silver.init()
+    gold.init()
 
 if __name__ == "__main__":
     init()
